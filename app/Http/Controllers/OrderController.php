@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\User;
+use App\Models\Order;
 
-class UserController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('users.index', ['users'=> $users]);
+        $orders = Order::all();
+
+        return view('orders.index',['orders'=>$orders]);
     }
 
     /**
@@ -26,7 +27,7 @@ class UserController extends Controller
      */
     public function create()
     {
-      return view('users.create');
+        return view('orders.create');
     }
 
     /**
@@ -39,11 +40,9 @@ class UserController extends Controller
     {
         $data = $request->all;
 
-        $data['password'] = Hash::make($data['password']);
+        Order::create($data);
 
-        User::create($data);
-
-        return redirect()->route('users.index');
+        return redirect()->route('orders.index')
     }
 
     /**
@@ -52,7 +51,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Orders $order)
     {
         //
     }
@@ -63,9 +62,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($order)
     {
-        return view('users.edit',['user' => $user]);
+        return view('orders.edit',['order'=> $order]);
     }
 
     /**
@@ -75,14 +74,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,User $users)
+    public function update(Request $request,Order $orders)
     {
-        $data = $request->all();
+        $data = request->();
 
-        $users->update($data);
+        $orders->update($data);
 
-        return redirect()->route('users.index');
-
+        return redirect()->route('orders.index');
     }
 
     /**
@@ -91,7 +89,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($users)
+    public function destroy($orders)
     {
         //
     }

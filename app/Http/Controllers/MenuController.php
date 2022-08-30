@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Menu;
+
 class MenuController extends Controller
 {
     /**
@@ -13,7 +15,7 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menus = Menus::all();
+        $menus = Menu::all();
 
         return view('menus.index',['menus'=> $menus]);
     }
@@ -25,7 +27,7 @@ class MenuController extends Controller
      */
     public function create()
     {
-        return view('menus.index');
+        return view('menus.create');
     }
 
     /**
@@ -36,7 +38,9 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        User::create($data);
+        $data = $request->all;
+
+        Menu::create($data);
 
         return redirect()->route('menus.index');
     }
@@ -47,7 +51,7 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($menu)
+    public function show(Menu $menu)
     {
         //
     }
@@ -58,9 +62,9 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($menu)
+    public function edit(Menu $menu)
     {
-        return view('menu.Edit',['menu'=> $menu]);
+        return view('menus.edit',['menu'=> $menu]);
     }
 
     /**
@@ -70,13 +74,13 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Menu $menu)
+    public function update(Request $request,Menu $menus)
     {
         $data = $request->all();
 
         $menu->update($data);
 
-        return redirect()->route('menu.index')
+        return redirect()->route('menus.index');
     }
 
     /**
@@ -85,7 +89,7 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($menu)
+    public function destroy($menus)
     {
         //
     }

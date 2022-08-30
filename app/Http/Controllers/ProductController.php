@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Product;
+
+use App\Http\Request\ProductRequest;
+
 class ProductController extends Controller
 {
     /**
@@ -13,7 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Products::all();
+        $products = Product::all();
         return view('products.index', ['products'=> $products]);
     }
 
@@ -24,7 +28,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.index');
+        return view('products.create');
     }
 
     /**
@@ -33,9 +37,21 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        User::create($data);
+        $data = $request->validated();
+          //dd($data);
+        $data['establishment_id'] = \Auth::user()->establishment_id;
+
+        $data['price_cents'] = (int) ($data['price_cents'] * 100);
+
+        //if (isset($data['is_avaliable'])){
+        //  $data['is_avaliable'] = 1;
+        //} else {
+        //  $data['is_avaliable'] = 0
+        //}
+
+        Product::create($data);
 
         return redirect()->route('products.index');
     }
@@ -46,9 +62,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($product)
+    public function show(Product $product)
     {
-        //
+        return view('products.show',['product' => $product]);
     }
 
     /**
@@ -57,9 +73,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($product)
+    public function edit(Product $product)
     {
-        return view('product.Edit',['product'=> $product]);
+        return view('products.edit',['product'=> $product]);
     }
 
     /**
@@ -69,13 +85,15 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Product $product)
+    public function update(ProductRequest $request,Product $products)
     {
         $data = $request->all();
 
-        $product->update($data);
+        $data['price_cents'] = (int) ($data['price_cents'] * 100);
 
-        return redirect()->route('products.index');
+        $products->update($data);
+
+        return redirect()->route('products.show',$products->id);
     }
 
     /**
@@ -84,8 +102,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($product)
+    public function destroy($products)
     {
-        //
+        $product->delete();
+
+        return redirect('product.index');
     }
 }
