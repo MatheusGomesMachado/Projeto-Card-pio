@@ -45,6 +45,11 @@ class ProductController extends Controller
 
         $data['price_cents'] = (int) ($data['price_cents'] * 100);
 
+        $data = $request->validated();
+        if ($data->hasfile('image')){
+          $imagefile = $data->file('image');
+        }
+
         //if (isset($data['is_avaliable'])){
         //  $data['is_avaliable'] = 1;
         //} else {
@@ -85,7 +90,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductRequest $request,Product $products)
+    public function update(ProductRequest $request, Product $products)
     {
         $data = $request->all();
 
@@ -102,10 +107,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($products)
+    public function destroy(Product $product)
     {
         $product->delete();
 
-        return redirect('product.index');
+        return redirect()->route('product.index');
     }
 }

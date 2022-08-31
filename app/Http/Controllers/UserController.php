@@ -75,13 +75,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,User $users)
+    public function update(UserRequest $request,User $users)
     {
         $data = $request->all();
 
         $users->update($data);
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.show', $users->id);
 
     }
 
@@ -91,8 +91,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($users)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return redirect()->route('users.index');
     }
 }

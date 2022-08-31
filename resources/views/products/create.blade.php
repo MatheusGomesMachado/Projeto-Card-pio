@@ -3,9 +3,7 @@
 <div container class="w-100 position-absolute d-flex justify-content-center aling-items-center">
   <div class="p-4 mx-4 my-4 w-100 w-sm-100 bg-light">
 <h1>Formulário de Criação de Produtos</h1>
-<form action="{{route('products.store')}}" method="post">
-  <div container class="w-100 position-absolute d-flex justify-content-center aling-items-center">
-    <div class="p-4 mx-4 my-4 w-100 w-sm-100 bg-light">
+<form action="{{route('products.store')}}" method="post" enctype="multipart/form-data">
   @csrf
   <div class="col-6">
     <label for="inputAddress2" class="form-label">Nome do Produto</label>
