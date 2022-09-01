@@ -42,6 +42,17 @@
     @enderror
   </div>
   </div>
+<div class="d-flex flex-row gap-2">
+  <div class="col-5">
+    <label for="image" class="form-label"><img src="{{asset('/storage'.$product->image_path)}}" widh="60" height="50"></label>
+    <input name='image' type="file" class="form-control" accept="image/jpeg">
+    @error('image')
+    <div class="text-danger">
+      {{ $massage }}
+    </div>
+    @enderror
+  </div>
+  </div>
 
 <div class="d-flex flex-row gap-2">
   <div class="col-5 gap-2">
@@ -50,7 +61,7 @@
     <select class="from-select" name="is_avaliable" aria-label="Disponibilidade do prato" id="inputAddress2" value="{{$product->is_avaliable}}">
       <option value="1" @if ($product->is_avaliable) selected @endif>Disponivel</option>
       <option value="0" @if (!$product->is_avaliable) selected @endif>Indisponível</option>
-      <button type="submit" class="btn btn-primary">Salvar</button>
+
    </div>
   </div>
     </div>

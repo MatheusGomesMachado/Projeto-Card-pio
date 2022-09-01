@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Product;
 
-use App\Http\Request\ProductRequest;
+use App\Http\Requests\ProductRequest;
 
 class ProductController extends Controller
 {
@@ -18,6 +18,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
+
         return view('products.index', ['products'=> $products]);
     }
 
@@ -45,10 +46,22 @@ class ProductController extends Controller
 
         $data['price_cents'] = (int) ($data['price_cents'] * 100);
 
-        $data = $request->validated();
-        if ($data->hasfile('image')){
-          $imagefile = $data->file('image');
+        $product = Product::create($data);
+
+        if ($request->hasFile('image')){
+
+          $imageFile = $request->file('image');
+
+
+          $image_path = $imagefile->storeAs(
+            "image/products/$product->id",
+            'image.jpg',
+            'public',
+          );
+          $data['image_path'] = $image_path;
         }
+
+          $product->update(['image_path' => $image_path]);
 
         //if (isset($data['is_avaliable'])){
         //  $data['is_avaliable'] = 1;
@@ -56,7 +69,6 @@ class ProductController extends Controller
         //  $data['is_avaliable'] = 0
         //}
 
-        Product::create($data);
 
         return redirect()->route('products.index');
     }

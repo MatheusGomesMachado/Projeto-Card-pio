@@ -8,24 +8,59 @@
   <div class="col-6">
     <label for="inputAddress2" class="form-label">Nome do Produto</label>
     <input name='name' type="text" class="form-control" id="inputAddress2" value="{{old('name')}}">
+    @error('name')
+    <div class="text-danger">
+      {{ $message }}
+    </div>
+    @enderror
   </div>
 
 <div class="d-flex flex-row gap-2">
   <div class="col-5">
     <label for="inputAddress2" class="form-label">Descrição do Produto</label>
-    <input name='description' type="text" class="form-control" id="inputAddress2" value="{{old('descripion')}}">
+    <input name='description' type="text" class="form-control" id="inputAddress2" value="{{old('description')}}">
+    @error('description')
+    <div class="text-danger">
+      {{ $message }}
+    </div>
+    @enderror
   </div>
 </div>
 <div class="d-flex flex-row gap-2">
   <div class="col-5">
     <label for="inputAddress2" class="form-label">Preço do Produto</label>
     <input name=price_cents type="text" class="form-control" id="inputAddress2" value="{{old('price_cents')}}">
+    @error('price_cents')
+    <div class="text-danger">
+      {{ $message }}
+    </div>
+    @enderror
+  </div>
+</div>
+<div class="d-flex flex-row gap-2">
+  <div class="col-5">
+    <label for="inputAddress2" class="form-label"> </label>
+    <input name='image' type="file" class="form-control" accept="image/jpeg">
+    @error('image')
+    <div class="text-danger">
+      {{ $message }}
+    </div>
+    @enderror
   </div>
 </div>
   <div class="d-flex flex-row gap-2">
   <div class="col-5 gap-2">
     <label for="inputAddress2" class="form-label">Ativo/Desativado</label>
-    <input name='is_avaliable' type="text" class="form-control" id="inputAddress2">
+    <select name='is_avaliable' type="text" class="form-control" id="inputAddress2">
+      <option value="0">Indisponível</option>
+
+      <option value="1">Disponivel</option>
+    </select>
+    @error('is_avaliable')
+    <div class="text-danger">
+      {{ $message }}
+    </div>
+    @enderror
   </div>
     <button type="submit" class="btn btn-primary">Criar</button>
   </div>
