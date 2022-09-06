@@ -53,15 +53,15 @@ class ProductController extends Controller
           $imageFile = $request->file('image');
 
 
-          $image_path = $imagefile->storeAs(
+          $image_path = $imageFile->storeAs(
             "image/products/$product->id",
             'image.jpg',
             'public',
           );
           $data['image_path'] = $image_path;
+          $product->update(['image_path' => $image_path]);
         }
 
-          $product->update(['image_path' => $image_path]);
 
         //if (isset($data['is_avaliable'])){
         //  $data['is_avaliable'] = 1;
@@ -123,6 +123,6 @@ class ProductController extends Controller
     {
         $product->delete();
 
-        return redirect()->route('product.index');
+        return redirect()->route('products.index');
     }
 }

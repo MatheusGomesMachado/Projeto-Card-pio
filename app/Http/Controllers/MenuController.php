@@ -38,9 +38,26 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all;
+
+        $data = $request->all();
+
+        $data['establishment_id'] = \Auth::user()->establishment_id;
 
         Menu::create($data);
+
+        if ($request->hasFile('image')){
+
+          $imageFile = $request->file('image');
+
+
+          $image_path = $imageFile->storeAs(
+            "image/menus/$menu->id",
+            'image.jpg',
+            'public',
+          );
+          $data['image_path'] = $image_path;
+          $menu->update(['image_path' => $image_path]);
+        }
 
         return redirect()->route('menus.index');
     }
@@ -53,7 +70,7 @@ class MenuController extends Controller
      */
     public function show(Menu $menu)
     {
-        //
+        return view('menus.show',['menu' => $menu]);
     }
 
     /**
@@ -78,7 +95,7 @@ class MenuController extends Controller
     {
         $data = $request->all();
 
-        $menu->update($data);
+        $menus->update($data);
 
         return redirect()->route('menus.index');
     }
@@ -89,8 +106,10 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($menus)
+    public function destroy(Menu $menu)
     {
-        //
+        $menu->delete();
+
+        return redirect()->route('menus.index');
     }
 }

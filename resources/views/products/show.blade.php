@@ -1,3 +1,6 @@
+<html>
+<body class="bg-secondary">
+
 @extends('layouts.NavBar')
 @section('content')
 <div container class="w-100 position-absolute d-flex justify-content-center aling-items-center">
@@ -15,3 +18,5 @@
 </div>
 </div>
 @endsection
+</body>
+</html>

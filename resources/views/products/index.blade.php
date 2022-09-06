@@ -1,3 +1,5 @@
+<html>
+<body class="bg-secondary">
 @extends('layouts.NavBar')
 @section('content')
 

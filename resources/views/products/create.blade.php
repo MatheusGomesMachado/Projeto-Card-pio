@@ -1,10 +1,14 @@
+<html>
+<body class="bg-secondary">
+
 @extends('layouts.NavBar')
 @section('content')
 <div container class="w-100 position-absolute d-flex justify-content-center aling-items-center">
   <div class="p-4 mx-4 my-4 w-100 w-sm-100 bg-light">
-<h1>Formulário de Criação de Produtos</h1>
 <form action="{{route('products.store')}}" method="post" enctype="multipart/form-data">
   @csrf
+  <h1>Formulário de Criação de Produtos</h1>
+  <button type="submit" class="btn btn-primary">Criar</button>
   <div class="col-6">
     <label for="inputAddress2" class="form-label">Nome do Produto</label>
     <input name='name' type="text" class="form-control" id="inputAddress2" value="{{old('name')}}">
@@ -62,10 +66,11 @@
     </div>
     @enderror
   </div>
-    <button type="submit" class="btn btn-primary">Criar</button>
   </div>
 
 </form>
 </div>
 </div>
 @endsection
+</body>
+</html>
