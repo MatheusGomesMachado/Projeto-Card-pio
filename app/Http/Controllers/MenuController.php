@@ -97,7 +97,7 @@ class MenuController extends Controller
 
         $menus->update($data);
 
-        return redirect()->route('menus.index');
+        return redirect()->route('menus.index',$menus->id);
     }
 
     /**

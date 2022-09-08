@@ -15,7 +15,9 @@ class EstablishmentController extends Controller
      */
     public function index()
     {
-        //
+        $establishments = Establishment::all();
+
+        return view('establishments.index',['establishments' => $establishments]);
     }
 
     /**
@@ -25,7 +27,7 @@ class EstablishmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('establishment.create');
     }
 
     /**
@@ -36,7 +38,12 @@ class EstablishmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        //dd($data);
+        Establishment::create($data);
+
+        return redirect()->route('establishments.index');
+
     }
 
     /**
@@ -45,9 +52,9 @@ class EstablishmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Establishment $establishment)
     {
-        //
+        return view('establishments.show',['establishment' => $establishment]);
     }
 
     /**
@@ -56,9 +63,9 @@ class EstablishmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Establishment $establishment)
     {
-        //
+        return view('establishments.edit',['establishment' => $establishment]);
     }
 
     /**
@@ -68,9 +75,13 @@ class EstablishmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EstablishmentRequest $request,Establishment $establishment)
     {
-        //
+        $data = $request->all();
+
+        $establishments->update($data);
+
+        return redirect()->route('establishments.show', $establishments->id);
     }
 
     /**
@@ -79,8 +90,10 @@ class EstablishmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Establishment $establishment)
     {
-        //
+        $establishment->destroy();
+
+        return redirect()->route('establishments.index');
     }
 }

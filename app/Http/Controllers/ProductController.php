@@ -38,7 +38,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request)
+    public function store(Request $request)
     {
         $data = $request->validated();
           //dd($data);
@@ -52,12 +52,12 @@ class ProductController extends Controller
 
           $imageFile = $request->file('image');
 
-
           $image_path = $imageFile->storeAs(
             "image/products/$product->id",
             'image.jpg',
             'public',
           );
+
           $data['image_path'] = $image_path;
           $product->update(['image_path' => $image_path]);
         }
@@ -102,7 +102,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductRequest $request, Product $products)
+    public function update(ProductRequest $request,Product $products)
     {
         $data = $request->all();
 

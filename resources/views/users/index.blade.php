@@ -1,5 +1,8 @@
+<html>
+  <body class="bg-secondary">
 @extends('layouts.NavBar')
 @section('content')
+
 <div container class=" w-100 position-absolute d-flex justify-content-center aling-items-center">
   <div class="p-4 mx-4 my-4 w-100 w-sm-100 bg-light">
     <h1>Funcionários</h1>

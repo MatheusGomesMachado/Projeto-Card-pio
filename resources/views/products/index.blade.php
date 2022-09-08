@@ -1,5 +1,5 @@
 <html>
-<body class="bg-secondary">
+  <body class="bg-secondary">
 @extends('layouts.NavBar')
 @section('content')
 
@@ -60,5 +60,5 @@
   </div>
 </div>
 @endsection
-</body>
+  </body>
 </html>

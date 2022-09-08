@@ -1,12 +1,16 @@
 <html>
 <body class="bg-secondary">
+
 @extends('layouts.NavBar')
 @section('content')
+
 <div container class="w-100 position-absolute d-flex justify-content-center aling-items-center">
   <div class="p-4 mx-4 my-4 w-100 w-sm-100 bg-light">
 <form action="{{route('menus.update', $menu->id)}}" method="post">
+
   @csrf
   @method('PUT')
+
   <h1>Formulário de Edição do Cardápio</h1>
   <div><button type="submit" class="btn btn-primary">Salvar</button></div>
   <div class="d-flex flex-row gap-2">

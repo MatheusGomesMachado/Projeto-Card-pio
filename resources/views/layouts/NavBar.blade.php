@@ -26,7 +26,7 @@
             <a class="nav-link" href="{{route('users.index')}}">Funcionarios</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href=#>Dados da Empresa</a>
+            <a class="nav-link" href="{{route('establishments.index')}}">Dados da Empresa</a>
           </li>
         </ul>
       </div>

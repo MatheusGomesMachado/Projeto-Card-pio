@@ -29,5 +29,5 @@ Route::middleware('auth')->group(function (){
   Route::resource('products',App\Http\Controllers\ProductController::class);
   Route::resource('menus',App\Http\Controllers\MenuController::class);
   //Route::resource('ordes',App\Http\Controller\OrderController::class);
-  //Route::resource('establishment',App\Http\Controller\EstablishmentController::class);
+  Route::resource('establishments',App\Http\Controllers\EstablishmentController::class);
 });

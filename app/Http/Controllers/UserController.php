@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 
+use App\Http\Requests\UserRequest;
+
 class UserController extends Controller
 {
     /**
@@ -37,9 +39,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all;
-
-        $data['password'] = Hash::make($data['password']);
+        $data = $request->all();
+        //dd($data);
+        $data['password'] = \Hash::make($data['password']);
 
         User::create($data);
 
@@ -54,7 +56,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('users.show',['user' => $user]);
     }
 
     /**
