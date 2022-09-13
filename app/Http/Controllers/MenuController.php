@@ -36,12 +36,13 @@ class MenuController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MenuRequest $request)
     {
-
-        $data = $request->all();
+        $data = $request->validated();
 
         $data['establishment_id'] = \Auth::user()->establishment_id;
+
+        $data['is_active'] = ($data['is_active'] ??'') == 'on';
 
         Menu::create($data);
 
@@ -70,7 +71,13 @@ class MenuController extends Controller
      */
     public function show(Menu $menu)
     {
-        return view('menus.show',['menu' => $menu]);
+      $addableProducts = Product::where('establishment_id', $menu->establishment_id)
+        ->whereDoesntHave('menus',function($query) use ($menu) {
+          $query->where('menus.id', $menu->id);
+      })
+        ->get();
+
+      return view('menus.show',['menu'=> $menu, 'addableProducts' => $addableProducts]);
     }
 
     /**
@@ -91,13 +98,17 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Menu $menus)
+    public function update(MenuRequest $request, Menu $menu)
     {
-        $data = $request->all();
 
-        $menus->update($data);
+      $data = $request->validated();
 
-        return redirect()->route('menus.index',$menus->id);
+      $data['is_active'] = ($data['is_active'] ??'') == 'on';
+
+      $menu->update($data);
+
+      return redirect()->route('menus.show', $menu->id);
+
     }
 
     /**
