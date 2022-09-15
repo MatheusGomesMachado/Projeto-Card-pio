@@ -56,7 +56,7 @@
 </td>
         </tr>
       @endforeach
-    </table>
+    </table>  
   </div>
 </div>
   @endsection

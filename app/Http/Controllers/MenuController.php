@@ -8,6 +8,8 @@ use App\Models\Menu;
 
 use App\Models\Product;
 
+use App\Http\Requests\MenuRequest;
+
 class MenuController extends Controller
 {
     /**
@@ -22,10 +24,10 @@ class MenuController extends Controller
         return view('menus.index',['menus'=> $menus]);
     }
 
-  //  public function showPublic(Menu $menu)
-  //  {
-  //      return view('menus.public.show',['menu' => $menu]);
-  //  }
+    public function showPublic(Menu $menu)
+    {
+        return view('menus.public.show',['menu' => $menu]);
+    }
 
     /**
      * Show the form for creating a new resource.

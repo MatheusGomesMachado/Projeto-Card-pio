@@ -53,7 +53,7 @@ class ProductController extends Controller
           $imageFile = $request->file('image');
 
           $image_path = $imageFile->storeAs(
-            "image/products/$product->id",
+            "images/products/$product->id",
             'image.jpg',
             'public',
           );

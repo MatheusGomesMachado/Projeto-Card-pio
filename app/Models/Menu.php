@@ -14,6 +14,7 @@ class Menu extends Model
         'description',
         'is_active',
         'establishment_id',
+        'image_path',
     ];
 
     public function establishments()

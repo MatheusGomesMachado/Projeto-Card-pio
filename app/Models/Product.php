@@ -15,6 +15,7 @@ class Product extends Model
         'price_cents',
         'is_avaliable',
         'establishment_id',
+        'image_path',
     ];
 
     public function users()
