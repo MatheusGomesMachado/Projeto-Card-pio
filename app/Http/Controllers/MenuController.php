@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Menu;
 
+use App\Models\Product;
+
 class MenuController extends Controller
 {
     /**
@@ -19,6 +21,11 @@ class MenuController extends Controller
 
         return view('menus.index',['menus'=> $menus]);
     }
+
+  //  public function showPublic(Menu $menu)
+  //  {
+  //      return view('menus.public.show',['menu' => $menu]);
+  //  }
 
     /**
      * Show the form for creating a new resource.
@@ -71,12 +78,9 @@ class MenuController extends Controller
      */
     public function show(Menu $menu)
     {
-      $addableProducts = Product::where('establishment_id', $menu->establishment_id)
-        ->whereDoesntHave('menus',function($query) use ($menu) {
-          $query->where('menus.id', $menu->id);
-      })
-        ->get();
-
+      //dd($menu);
+      $addableProducts = Product::where('establishment_id', $menu->establishment_id)->get();
+      //  dd($addableProducts);
       return view('menus.show',['menu'=> $menu, 'addableProducts' => $addableProducts]);
     }
 

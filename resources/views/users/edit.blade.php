@@ -11,7 +11,7 @@
   @method('PUT')
 
     <h1>Formulário de Funcionários cadastro de usuario</h1>
-      <button type="submit" class="btn btn-primary">Salvar</button>
+      <button type="submit" class="btn btn-outline-primary">Salvar</button>
 <div class="d-flex flex-row gap-2">
   <div class="col-6">
     <label for="inputAddress2" class="form-label">Nome Completo</label>

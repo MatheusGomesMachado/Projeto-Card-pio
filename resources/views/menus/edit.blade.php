@@ -12,7 +12,7 @@
   @method('PUT')
 
   <h1>Formulário de Edição do Cardápio</h1>
-  <div><button type="submit" class="btn btn-primary">Salvar</button></div>
+  <div><button type="submit" class="btn btn-outline-primary">Salvar</button></div>
   <div class="d-flex flex-row gap-2">
   <div class="col-6">
     <label for="inputAddress2" class="form-label">Nome do Cardápio</label>

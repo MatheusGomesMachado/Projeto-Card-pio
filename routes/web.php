@@ -20,6 +20,7 @@ Route::get('/home', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/cardapio{menu}', 'App\Controllers\MenuController@showPublic')->name('menus.public.show');
 
 
 
@@ -30,6 +31,6 @@ Route::middleware('auth')->group(function (){
   Route::resource('menus',App\Http\Controllers\MenuController::class);
   //Route::resource('ordes',App\Http\Controller\OrderController::class);
   Route::resource('establishments',App\Http\Controllers\EstablishmentController::class);
-  Route::resource('menu.product',App\Http\Controllers\EstablishmentController::class)
+  Route::resource('menu.product',App\Http\Controllers\MenuProductController::class)
   ->only(['store', 'destroy']);
 });

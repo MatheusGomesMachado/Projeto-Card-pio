@@ -7,7 +7,7 @@
   <div container class="w-100 position-absolute d-flex justify-content-center aling-items-center">
     <div class="p-4 mx-4 my-4 w-100 w-sm-100 bg-light">
         <h1>Gerenciamento de Dados da Empresa</h1>
-        <a class="btn btn-dark bg-primary" href="{{route('establishments.create')}}">Criar</a>
+        <a class="btn btn-dark bg-primary" href="{{route('establishments.create')}}">Salvar</a>
 
           <div class="d-flex flex-row gap-2">
             <div class="col-12">

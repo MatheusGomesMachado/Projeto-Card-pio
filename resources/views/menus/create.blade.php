@@ -7,7 +7,7 @@
 <form action="{{route('menus.store')}}" method="post">
   @csrf
   <h1>Formulário de Criação do Cardápio</h1>
-  <button type="submit" class="btn btn-primary">Criar</button>
+  <button type="submit" class="btn btn-outline-primary">Criar</button>
   <div class="d-flex flex-row gap-2">
   <div class="col-6">
     <label for="inputAddress2" class="form-label">Nome do Cardápio</label>

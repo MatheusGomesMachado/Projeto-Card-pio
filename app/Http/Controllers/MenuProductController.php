@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Menu;
+
+use App\Models\Product;
+
+
 class MenuProductController extends Controller
 {
     /**
@@ -16,7 +21,7 @@ class MenuProductController extends Controller
     {
         $menu->products()->attach($request -> get('product_id'));
 
-        return redirect()->route('menu.show', $menu->id);
+        return redirect()->route('menus.show', $menu->id);
     }
 
     /**
@@ -29,6 +34,6 @@ class MenuProductController extends Controller
     {
         $menu->products()->detach($product->id);
 
-        return redirect()->route('menu.show', $menu->id);
+        return redirect()->route('menus.show', $menu->id);
     }
 }
