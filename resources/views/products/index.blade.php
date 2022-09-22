@@ -29,7 +29,7 @@
           <td>{{$product->name}}</td>
           <td>{{$product->description}}</td>
           <td>R${{($product->price_cents)/100}}</td>
-          <td>@if($product->is_avaliable)
+          <td>@if($product->is_avaliable) 
               Disponível
             @else
               Indisponível

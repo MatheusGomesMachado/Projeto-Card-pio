@@ -28,5 +28,10 @@ class Product extends Model
         return $this->hasMany(Order::class);
     }
 
+    public function menus()
+    {
+        return $this->hasMany(Menu::class);
+    }
+
 
 }

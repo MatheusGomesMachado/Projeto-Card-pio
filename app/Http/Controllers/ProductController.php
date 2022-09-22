@@ -102,15 +102,15 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductRequest $request,Product $products)
+    public function update(ProductRequest $request,Product $product)
     {
         $data = $request->all();
-
+        //dd($data);
         $data['price_cents'] = (int) ($data['price_cents'] * 100);
 
-        $products->update($data);
+        $product->update($data);
 
-        return redirect()->route('products.show',$products->id);
+        return redirect()->route('products.index',$product->id);
     }
 
     /**

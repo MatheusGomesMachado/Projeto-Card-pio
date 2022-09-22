@@ -5,11 +5,10 @@
       <div container class="w-100 position-absolute d-flex justify-content-center aling-items-center">
         <div class="p-4 mx-4 my-4 w-100 w-sm-100 bg-light">
           <form action="{{route('menus.store')}}" method="post">
-            
+
    @csrf
 
     <h1>Formulário de Criação do Cardápio</h1>
-    <button type="submit" class="btn btn-outline-primary">Criar</button>
   <div class="d-flex flex-row gap-2">
     <div class="col-6">
       <label for="inputAddress2" class="form-label">Nome do Cardápio</label>
@@ -49,7 +48,7 @@
  <div class="d-flex flex-row gap-2">
   <div class="col-5 gap-2">
     <label for="inputAddress2" class="form-label">Ativo/Desativado</label>
-      <select name='is_active' type="text" class="form-control" id="inputAddress2">
+      <select name='is_active' type="text" class="form-control" id="inputAddress2" value="{{old('is_active')}}">
         <option value="0">Indisponível</option>
 
         <option value="1">Disponivel</option>
@@ -62,6 +61,7 @@
   </div>
  </div>
 
+ <button type="submit" class="btn btn-outline-primary">Criar</button>
     </form>
   </div>
 </div>

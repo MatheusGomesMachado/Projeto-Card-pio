@@ -26,7 +26,7 @@
             <th scope="row">{{$menu->id}}</th>
               <td>{{$menu->name}}</td>
               <td>{{$menu->description}}</td>
-              <td>@if($menu->is_avaliable)
+              <td>@if($menu->is_active) 
                   Disponível
                     @else
                   Indisponível

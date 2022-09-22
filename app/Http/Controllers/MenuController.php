@@ -48,7 +48,7 @@ class MenuController extends Controller
     public function store(MenuRequest $request)
     {
         $data = $request->validated();
-
+//dd($data);
         $data['establishment_id'] = \Auth::user()->establishment_id;
 
         $data['is_active'] = ($data['is_active'] ??'') == 'on';
@@ -108,7 +108,7 @@ class MenuController extends Controller
     {
 
       $data = $request->validated();
-
+      //dd($data);
       $data['is_active'] = ($data['is_active'] ??'') == 'on';
 
       $menu->update($data);
