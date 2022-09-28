@@ -38,7 +38,7 @@
           <div class="d-flex flex-row gap-2">
             <div class="col-5 gap-2">
               <label for="inputAddress2" class="form-label">Telefone</label>
-              <input name='phone' type="text" class="form-control" id="inputAddress2" value="{{('phone', $establishment->phone)}}">
+              <input name='phone' type="text" class="form-control" id="inputAddress2" value="{{old('phone', $establishment->phone)}}">
             </div>
           </div>
 

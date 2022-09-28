@@ -16,18 +16,6 @@
 
           <div class="d-flex flex-row gap-2">
             <div class="col-5">
-              <label for="inputAddress2" class="form-label">CNPJ</label>
-              <input name='cnpj' type="text" class="form-control" id="inputAddress2">
-              @error('cnpj')
-              <div class="text-danger">
-                {{ $message }}
-              </div>
-              @enderror
-            </div>
-          </div>
-
-          <div class="d-flex flex-row gap-2">
-            <div class="col-5">
               <label for="inputAddress2" class="form-label">Nome do Estabelecimento</label>
               <input name='trading_name' type="text" class="form-control" id="inputAddress2">
               @error('trading_name')
@@ -51,10 +39,10 @@
           </div>
 
           <div class="d-flex flex-row gap-2">
-            <div class="col-5 gap-2">
-              <label for="inputAddress2" class="form-label">Telefone</label>
-              <input name='phone' type="text" class="form-control" id="inputAddress2">
-              @error('phone')
+            <div class="col-5">
+              <label for="inputAddress2" class="form-label">CNPJ</label>
+              <input name='cnpj' type="text" class="form-control" id="inputAddress2">
+              @error('cnpj')
               <div class="text-danger">
                 {{ $message }}
               </div>
@@ -63,10 +51,10 @@
           </div>
 
           <div class="d-flex flex-row gap-2">
-            <div class="col-5">
-              <label for="inputAddress2" class="form-label">Foto</label>
-              <input name='image' type="file" class="form-control" accept="image/jpeg">
-              @error('image')
+            <div class="col-5 gap-2">
+              <label for="inputAddress2" class="form-label">Telefone</label>
+              <input name='phone' type="text" class="form-control" id="inputAddress2">
+              @error('phone')
               <div class="text-danger">
                 {{ $message }}
               </div>

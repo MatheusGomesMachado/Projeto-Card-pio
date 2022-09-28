@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Establishment;
 
+use App\Http\EstablishmentRequest;
+
 class EstablishmentController extends Controller
 {
     /**
@@ -27,7 +29,7 @@ class EstablishmentController extends Controller
      */
     public function create()
     {
-        return view('establishment.create');
+        return view('establishments.create');
     }
 
     /**
