@@ -41,7 +41,7 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         $data = $request->validated();
-          //dd($data);
+
         $data['establishment_id'] = \Auth::user()->establishment_id;
 
         $data['price_cents'] = (int) ($data['price_cents'] * 100);
@@ -62,13 +62,11 @@ class ProductController extends Controller
           $product->update(['image_path' => $image_path]);
         }
 
-
         //if (isset($data['is_avaliable'])){
         //  $data['is_avaliable'] = 1;
         //} else {
         //  $data['is_avaliable'] = 0
         //}
-
 
         return redirect()->route('products.index');
     }
@@ -105,7 +103,7 @@ class ProductController extends Controller
     public function update(ProductRequest $request,Product $product)
     {
         $data = $request->all();
-        //dd($data);
+
         $data['price_cents'] = (int) ($data['price_cents'] * 100);
 
         $product->update($data);

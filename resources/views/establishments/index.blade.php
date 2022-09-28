@@ -1,11 +1,11 @@
 <html>
   <body class="bg-secondary">
 
-@extends('layouts.NavBar')
-@section('content')
+    @extends('layouts.NavBar')
+    @section('content')
 
-  <div container class="w-100 position-absolute d-flex justify-content-center aling-items-center">
-    <div class="p-4 mx-4 my-4 w-100 w-sm-100 bg-light">
+    <div container class="w-100 position-absolute d-flex justify-content-center aling-items-center">
+      <div class="p-4 mx-4 my-4 w-100 w-sm-100 bg-light">
         <h1>Gerenciamento de Dados da Empresa</h1>
         <a class="btn btn-dark bg-primary" href="{{route('establishments.create')}}">Salvar</a>
 
@@ -36,8 +36,8 @@
               <input type="text" class="form-control" id="inputCity">
             </div>
           </div>
+        </div>
       </div>
-    </div>
-@endsection
-</body>
+    @endsection
+  </body>
 </html>

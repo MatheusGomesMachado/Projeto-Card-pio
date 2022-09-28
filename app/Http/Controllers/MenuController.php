@@ -48,26 +48,10 @@ class MenuController extends Controller
     public function store(MenuRequest $request)
     {
         $data = $request->validated();
-//dd($data);
+ 
         $data['establishment_id'] = \Auth::user()->establishment_id;
 
-        $data['is_active'] = ($data['is_active'] ??'') == 'on';
-
         Menu::create($data);
-
-        if ($request->hasFile('image')){
-
-          $imageFile = $request->file('image');
-
-
-          $image_path = $imageFile->storeAs(
-            "image/menus/$menu->id",
-            'image.jpg',
-            'public',
-          );
-          $data['image_path'] = $image_path;
-          $menu->update(['image_path' => $image_path]);
-        }
 
         return redirect()->route('menus.index');
     }
@@ -80,9 +64,9 @@ class MenuController extends Controller
      */
     public function show(Menu $menu)
     {
-      //dd($menu);
+
       $addableProducts = Product::where('establishment_id', $menu->establishment_id)->get();
-      //  dd($addableProducts);
+
       return view('menus.show',['menu'=> $menu, 'addableProducts' => $addableProducts]);
     }
 
@@ -108,12 +92,10 @@ class MenuController extends Controller
     {
 
       $data = $request->validated();
-      //dd($data);
-      $data['is_active'] = ($data['is_active'] ??'') == 'on';
 
       $menu->update($data);
 
-      return redirect()->route('menus.show', $menu->id);
+      return redirect()->route('menus.index', $menu->id);
 
     }
 

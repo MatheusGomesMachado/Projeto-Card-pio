@@ -37,9 +37,9 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
         //dd($data);
         $data['password'] = \Hash::make($data['password']);
 
@@ -77,13 +77,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request,User $users)
+    public function update(UserRequest $request,User $user)
     {
         $data = $request->all();
 
-        $users->update($data);
+        $user->update($data);
 
-        return redirect()->route('users.show', $users->id);
+        return redirect()->route('users.index', $user->id);
 
     }
 
