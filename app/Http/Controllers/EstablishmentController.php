@@ -38,9 +38,9 @@ class EstablishmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EstablishmentRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
         //dd($data);
         Establishment::create($data);
 
@@ -77,13 +77,13 @@ class EstablishmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EstablishmentRequest $request,Establishment $establishment)
+    public function update(Request $request,Establishment $establishment)
     {
         $data = $request->all();
+        //dd($data);
+        $establishment->update($data);
 
-        $establishments->update($data);
-
-        return redirect()->route('establishments.show', $establishments->id);
+        return redirect()->route('establishments.index',$establishment->id);
     }
 
     /**
@@ -94,7 +94,7 @@ class EstablishmentController extends Controller
      */
     public function destroy(Establishment $establishment)
     {
-        $establishment->destroy();
+        $establishment->delete();
 
         return redirect()->route('establishments.index');
     }
